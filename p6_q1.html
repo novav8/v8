@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical Page</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+            margin: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 700px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back-btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Practical Slip 6 - Question 1</h1>
+
+        <img src="https://via.placeholder.com/700x300">
+
+        <p>
+            <h3>Q1. Configure a DHCP Server Network and Connect a Client PC</h3>
+
+<p><strong>Aim:</strong><br>
+To configure a DHCP server and assign IP address automatically to a client PC.</p>
+
+<p><strong>Requirements:</strong><br>
+1 Server<br>
+1 Switch<br>
+1 PC<br>
+Straight-through cables</p>
+
+<p><strong>Procedure:</strong></p>
+
+<p>
+1. Place Server, Switch and PC in Packet Tracer.<br>
+2. Connect Server to Switch using straight-through cable.<br>
+3. Connect PC to Switch using straight-through cable.<br>
+4. Click on Server → Desktop → IP Configuration.<br>
+&nbsp;&nbsp;&nbsp;IP Address: 192.168.1.1<br>
+&nbsp;&nbsp;&nbsp;Subnet Mask: 255.255.255.0<br>
+5. Go to Server → Services → DHCP.<br>
+&nbsp;&nbsp;&nbsp;Turn DHCP Service: ON<br>
+&nbsp;&nbsp;&nbsp;Pool Name: LAN<br>
+&nbsp;&nbsp;&nbsp;Default Gateway: 192.168.1.1<br>
+&nbsp;&nbsp;&nbsp;DNS Server: 8.8.8.8<br>
+&nbsp;&nbsp;&nbsp;Start IP Address: 192.168.1.10<br>
+&nbsp;&nbsp;&nbsp;Subnet Mask: 255.255.255.0<br>
+&nbsp;&nbsp;&nbsp;Click Add<br>
+6. Click on PC → Desktop → IP Configuration.<br>
+&nbsp;&nbsp;&nbsp;Select DHCP.
+</p>
+
+<p><strong>Result:</strong><br>
+The client PC receives IP address automatically from the DHCP server.</p>
+        </p>
+
+        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+    </div>
+
+</body>
+</html>
