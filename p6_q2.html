@@ -45,33 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 6 - Question 2</h1>
+         <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            <h3>Q2. Verify IP Allocation</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To verify that the client PC has received IP address from the DHCP server.</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Procedure:</strong></p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p>
-1. Click on PC → Desktop → Command Prompt.<br>
-2. Type the following command:<br>
-&nbsp;&nbsp;&nbsp;ipconfig<br>
-3. Check the assigned IP Address, Subnet Mask and Default Gateway.<br>
-4. To test network connectivity, type:<br>
-&nbsp;&nbsp;&nbsp;ping 192.168.1.1<br>
-5. If replies are received, the network connection is successful.
-</p>
+  navigator.clipboard.writeText(text);
 
-<p><strong>Result:</strong><br>
-The IP address is successfully assigned by the DHCP server and connectivity is verified.</p>
-        </p>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
