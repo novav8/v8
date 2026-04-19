@@ -49,115 +49,32 @@
 
       
 
-        <p>
-          <h2>Practical</h2>
+        <h2>practical2</h2>
 
-<h3>Aim:</h3>
-<p>
-To control the motion of a Servo motor using Arduino.
-</p>
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-<h3>Simulation Environment:</h3>
-<p>
-TinkerCAD (Free online simulator)
-</p>
+<br><br>
 
-<h3>Components:</h3>
-<p>
-Arduino UNO<br>
-Servo Motor
-</p>
-
-<h3>Theory:</h3>
-
-<p>
-A micro servo motor is a small-sized servo motor designed for applications where space is limited. 
-Servo motors are devices that incorporate a feedback mechanism to control the speed and position of the motor accurately.
-They are commonly used in robotics, remote-controlled vehicles, and other projects where precise control of movement is required.
-</p>
-
-<p><strong>Motor:</strong> The motor inside the servo is responsible for producing mechanical motion. It typically consists of a DC motor.</p>
-
-<p><strong>Gear Train:</strong> Servos have a gear train that converts the high-speed, low-torque output of the motor into low-speed, high-torque motion.</p>
-
-<p><strong>Control Circuitry:</strong> The control circuitry interprets signals received from an external source (like Arduino) and translates them into precise movements.</p>
-
-<p><strong>Potentiometer (Feedback Device):</strong> Most servo motors contain a potentiometer that provides feedback to the control circuit about the current position of the motor.</p>
-
-<p>
-When we connect a micro servo motor to an Arduino, we typically use the Servo library in Arduino to control its movements.
-</p>
-
-<p>
-The movement of a servo motor attached to an Arduino is controlled by sending a series of pulses to the servo motor.
-These pulses are generated using a technique called Pulse Width Modulation (PWM).
-</p>
-
-<h3>Working:</h3>
-
-<ul>
-<li><strong>Pulse Width Modulation (PWM):</strong> Arduino boards generate PWM signals where the pulse width determines the servo’s position.</li>
-
-<li><strong>Servo Library:</strong> The Arduino Servo library simplifies controlling servo motors by generating the required PWM signals.</li>
-
-<li><strong>Attach Function:</strong> The attach() function connects the servo object to a specific Arduino pin.</li>
-
-<li><strong>Write Function:</strong> The write() function sets the servo angle (0° to 180°).</li>
-
-<li><strong>Pulse Generation:</strong> The library converts the angle into an appropriate PWM signal and sends it to the servo.</li>
-
-<li><strong>Control Loop:</strong> The servo continuously adjusts its position based on feedback from the internal potentiometer.</li>
-
-<li><strong>Looping Control:</strong> Using a loop, different angles can be sent to the servo to create continuous or patterned movement.</li>
-</ul>
-
-<h3>Conclusion:</h3>
-<p>
-The servo motor was successfully controlled using Arduino by generating PWM signals. 
-The position of the servo can be precisely adjusted using programming and the Servo library.
-</p>
-        </p><hr>
-        <div>
-            <button onclick="copyText()"> Copy the code </button>
-            <div id="copyText">
-<h3>Arduino Code: Servo Motor Control</h3>
-
-<pre><code>
-// Include the Servo library
-#include &lt;Servo.h&gt;
-
-Servo servoBase;   // Create a Servo object
-
-void setup() {
-
-  // Attach the servo to pin A1
-  servoBase.attach(A1);
-
-  // Set the servo motor to 0-degree position
-  servoBase.write(0);
-}
-
-void loop() {
-
-  // Sweep the servo from 0 to 180 degrees
-  for (int i = 0; i &lt;= 180; i += 10) {
-
-    servoBase.write(i);   // Set servo to current angle
-    delay(2000);          // Pause for 2 seconds
-  }
-}
-</code></pre></div> <hr>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
 <script>
-function copyText() {
-    var text = document.getElementById("copyText").innerText;
-    navigator.clipboard.writeText(text);
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
+
+  navigator.clipboard.writeText(text);
+
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
 }
 </script>
-  <img src="pra1.png">
-        </div>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
