@@ -45,27 +45,84 @@
 <body>
 
     <div class="container">
-          <h2>practical2</h2>
+          <h2>Q.1 Implement bubble sort algorithm</h2>
+<textarea id="code1" rows="10" cols="80">
+arr = [5, 3, 8, 6, 2]
 
-<textarea id="codeBox" rows="10" cols="80">
-Apna code yaha daal bhai 😎
-</textarea>
+n = len(arr)
+
+for i in range(n):
+    for j in range(0, n - i - 1):
+        if arr[j] > arr[j + 1]:
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+print("Sorted list:", arr)</textarea>
+<button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
+        <h2>Q.2 Implement selection sort algorithm.</h2>
 
-<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
+<textarea id="code2"  rows="10" cols="80">
+arr = [5, 3, 8, 6, 2]
+
+n = len(arr)
+
+for i in range(n):
+    min_index = i
+    for j in range(i + 1, n):
+        if arr[j] < arr[min_index]:
+            min_index = j
+    arr[i], arr[min_index] = arr[min_index], arr[i]
+
+print("Sorted list:", arr)</textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
+        <br> <br>
+        <h2>Q.3 Implement insertion sort algorithm</h2>
+<textarea id="code3"  rows="10" cols="80">
+arr = [5, 3, 8, 6, 2]
+
+for i in range(1, len(arr)):
+    key = arr[i]
+    j = i - 1
+    while j >= 0 and key < arr[j]:
+        arr[j + 1] = arr[j]
+        j -= 1
+    arr[j + 1] = key
+
+print("Sorted list:", arr)</textarea>
+<button onclick="copyCode('code3', this)">Copy</button>
+        <br> <br>
+        <h2> Q.4 Implement algorithms to find Nth Maximum element in a list.</h2>
+<textarea id="code4"  rows="10" cols="80">
+arr = [5, 3, 8, 6, 2]
+n = 2   # change this value to find different Nth maximum
+
+arr.sort(reverse=True)
+
+print(n, "th Maximum Element is:", arr[n - 1])</textarea>
+<button onclick="copyCode('code4', this)">Copy</button>
+        <br><br>
+         <h2> Q.4 Implement algorithms to find Nth Minimum element in a list.</h2>
+<textarea id="code5"  rows="10" cols="80">
+
+arr = [5, 3, 8, 6, 2]
+n = 3   # change this value to find different Nth minimum
+
+arr.sort()
+
+print(n, "th Minimum Element is:", arr[n - 1])</textarea>
+<button onclick="copyCode('code5', this)">Copy</button>
 
 <script>
-function copyCode() {
-  let text = document.getElementById("codeBox").value;
-  let btn = document.getElementById("copyBtn");
+function copyCode(id, btn) {
+  let text = document.getElementById(id).value;
 
   navigator.clipboard.writeText(text);
 
   btn.innerText = "✅ Copied!";
   
   setTimeout(() => {
-    btn.innerText = "📋 Copy Code";
+    btn.innerText = "📋 Copy";
   }, 2000);
 }
 </script>
