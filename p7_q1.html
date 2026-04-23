@@ -45,16 +45,61 @@
 <body>
 
     <div class="container">
-          <h2>Q.1 Implement recursive algorithm e.g., factorial</h2>
+          <h2>Aim: Function Overloading and Overriding: a. Develop programs to demonstrate function overloading and overriding within classes.</h2>
 <textarea id="code1" rows="10" cols="80">
-def factorial(n):
-    if n == 0 or n == 1:   # Base case
-        return 1
-    else:
-        return n * factorial(n - 1)   # Recursive call
+#include <iostream.h>
+#include <conio.h>
 
-num = int(input("Enter a number: "))
-print("Factorial =", factorial(num))</textarea>
+// Base class
+class base
+{
+public:
+    // Function Overloading
+    void show()
+    {
+        cout << "Function with no argument" << endl;
+    }
+
+    void show(int x)
+    {
+        cout << "Function with one argument: " << x << endl;
+    }
+
+    // Function to be overridden
+    void display()
+    {
+        cout << "Display from Base class" << endl;
+    }
+};
+
+// Derived class
+class derived : public base
+{
+public:
+    // Function Overriding
+    void display()
+    {
+        cout << "Display from Derived class" << endl;
+    }
+};
+
+void main()
+{
+    clrscr();
+
+    base b;
+    derived d;
+
+    // Function Overloading
+    b.show();
+    b.show(10);
+
+    // Function Overriding
+    d.display();
+
+    getch();
+}
+</textarea>
 <button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
