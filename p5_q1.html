@@ -44,63 +44,76 @@
 </head>
 <body>
 
-    <h2>Q. Implement linear algorithm on a list.</h2>
+    <h2> a) Create a simple class with data members and member functions.</h2>
 
 <textarea id="code1" rows="10" cols="80">
-# Array Definition
-arr = [5, 2, 9, 1, 7, 6]
-print("Array:", arr)
-# Element to search
-x = 7
-print("Searching for:", x)
-# Linear Search
-def linear_search(arr, x):
-    for i in range(len(arr)):
-        if arr[i] == x:
-            return i  # Return index if found
-    return -1     # Return -1 if not found
+#include <iostream.h>
+#include <string.h>
+#include <conio.h>
 
-index = linear_search(arr, x)
+class student
+{
+    char name[20];
+    int age;
 
-if index != -1:
-    print(f"Element {x} found at index {index}")
-else:
-    print(f"Element {x} not found in the array")    
+public:
+    void setdata()
+    {
+        strcpy(name, "alice");
+        age = 20;
+    }
+
+    void displaydata()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+void main()
+{
+    clrscr();
+    student s;
+    s.setdata();
+    s.displaydata();
+    getch();
+}     
 </textarea>
 <button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
-<h2>Q. Implement binary search algorithm on a list.</h2>
+<h2>b) Demonstrate the use of class instances to access data and invoke member functions.</h2>
 <textarea id="code2" rows="10" cols="80">
-# Array Definition (sorted)
-arr = [1, 2, 5, 6, 7, 9]
-print("Sorted Array:", arr)
+#include <iostream.h>
+#include <conio.h>
 
-# Element to search
-x = 9
-print("Searching for:", x)
+class car
+{
+    int speed;
 
-# Binary Search
-def binary_search(arr, x):
-    low = 0
-    high = len(arr) - 1
+public:
+    void setspeed()
+    {
+        speed = 60;
+    }
 
-    while low <= high:
-        mid = (low + high) // 2
-        if arr[mid] == x:
-            return mid
-        elif arr[mid] < x:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return -1
+    void showspeed()
+    {
+        cout << "Car speed: " << speed << " km/h" << endl;
+    }
+};
 
-index = binary_search(arr, x)
+void main()
+{
+    clrscr();
 
-if index != -1:
-    print(f"Element {x} found at index {index}")
-else:
-    print(f"Element {x} not found in the array")</textarea>
+    car c1;
+    c1.setspeed();
+    c1.showspeed();
+
+    getch();
+}
+</textarea>
 <button onclick="copyCode('code2', this)">Copy</button>
 
 <script>
