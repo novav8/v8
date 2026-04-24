@@ -48,35 +48,31 @@
         
 
       
-  <h2>a) Create BEFORE INSERT and AFTER UPDATE triggers on a table. </h2>
+  <h2> a) Use Native Dynamic SQL (EXECUTE IMMEDIATE) to create a table at runtime.
+</h2>
 
 <textarea id="codeBox" rows="10" cols="80">
-CREATE TABLE employee_trg (
-    emp_id NUMBER,
-    emp_name VARCHAR2(50),
-    salary NUMBER
-);
-CREATE OR REPLACE TRIGGER trg_before_insert
-BEFORE INSERT ON employee_trg
-FOR EACH ROW
+DECLARE
+    v_sql VARCHAR2(200);
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Before Insert Trigger Executed');
+    -- SQL statement to create table
+    v_sql := 'CREATE TABLE student_dynamic (
+                student_id NUMBER,
+                student_name VARCHAR2(50),
+                marks NUMBER
+              )';
+
+    -- Execute dynamic SQL
+    EXECUTE IMMEDIATE v_sql;
+
+    DBMS_OUTPUT.PUT_LINE('Table created successfully.');
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END;
 /
-CREATE OR REPLACE TRIGGER trg_after_update
-AFTER UPDATE ON employee_trg
-FOR EACH ROW
-BEGIN
-    DBMS_OUTPUT.PUT_LINE('After Update Trigger Executed');
-END;
-/
-SET SERVEROUTPUT ON;
-
-INSERT INTO employee_trg VALUES (1,'Shreya',40000);
-
-UPDATE employee_trg
-SET salary = 45000
-WHERE emp_id = 1;</textarea>
+</textarea>
 
 <br><br>
 
