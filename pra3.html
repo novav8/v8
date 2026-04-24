@@ -47,27 +47,47 @@
     <div class="container">
         
 
-     <h2>practical2</h2>
+     <h2>  a)Define a nested table type, initialize it, and store multiple values.</h2>
 
-<textarea id="codeBox" rows="10" cols="80">
-Apna code yaha daal bhai 😎
-</textarea>
+<textarea id="code1" rows="10" cols="80">SET SERVEROUTPUT ON;
+
+DECLARE
+    TYPE num_table IS TABLE OF NUMBER;
+    numbers num_table := num_table(10,20,30,40,50);
+BEGIN
+    FOR i IN 1..numbers.COUNT LOOP
+        DBMS_OUTPUT.PUT_LINE('Value: ' || numbers(i));
+    END LOOP;
+END;
+/</textarea>
+<button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
+        <h2>b) Store a nested table in a column of a database table and retrieve it.</h2>
 
-<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
+<textarea id="code2" rows="10" cols="80">CREATE OR REPLACE TYPE marks_table AS TABLE OF NUMBER;
+/
+CREATE TABLE student_marks (
+    student_id NUMBER,
+    marks marks_table
+) NESTED TABLE marks STORE AS marks_storage;
+INSERT INTO student_marks
+VALUES (1, marks_table(70,80,90));
+SELECT student_id, m.COLUMN_VALUE AS marks
+FROM student_marks s,
+     TABLE(s.marks) m;</textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
 
 <script>
-function copyCode() {
-  let text = document.getElementById("codeBox").value;
-  let btn = document.getElementById("copyBtn");
+function copyCode(id, btn) {
+  let text = document.getElementById(id).value;
 
   navigator.clipboard.writeText(text);
 
   btn.innerText = "✅ Copied!";
   
   setTimeout(() => {
-    btn.innerText = "📋 Copy Code";
+    btn.innerText = "📋 Copy";
   }, 2000);
 }
 </script>
