@@ -47,11 +47,35 @@
     <div class="container">
         
 
-  <h2>practical2</h2>
+   <h2>a) Create BEFORE INSERT and AFTER UPDATE triggers on a table. </h2>
 
 <textarea id="codeBox" rows="10" cols="80">
-Apna code yaha daal bhai 😎
-</textarea>
+CREATE TABLE employee_trg (
+    emp_id NUMBER,
+    emp_name VARCHAR2(50),
+    salary NUMBER
+);
+CREATE OR REPLACE TRIGGER trg_before_insert
+BEFORE INSERT ON employee_trg
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Before Insert Trigger Executed');
+END;
+/
+CREATE OR REPLACE TRIGGER trg_after_update
+AFTER UPDATE ON employee_trg
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('After Update Trigger Executed');
+END;
+/
+SET SERVEROUTPUT ON;
+
+INSERT INTO employee_trg VALUES (1,'Shreya',40000);
+
+UPDATE employee_trg
+SET salary = 45000
+WHERE emp_id = 1;</textarea>
 
 <br><br>
 
