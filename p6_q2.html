@@ -45,67 +45,83 @@
 <body>
 
     <div class="container">
-         <h2>Aim: Advanced Concepts: a. Implement programs showcasing friend functions, inline functions, and the use of the this pointer within classes.</h2>
+         <h2>Use a record variable in a loop to display data from a table.</h2>
+<textarea id="code1"rows="10" cols="80">CREATE TABLE employee (
+    emp_id   NUMBER,
+    emp_name VARCHAR2(50),
+    salary   NUMBER(10,2)
+);
 
-<textarea id="codeBox" rows="10" cols="80">
-#include <iostream.h>
-#include <conio.h>
+INSERT INTO employee VALUES (101, 'Alice', 45000);
+INSERT INTO employee VALUES (102, 'Bob', 55000);
+INSERT INTO employee VALUES (103, 'Charlie', 60000);
 
-class number
-{
-    int x, y;
+COMMIT;
 
-public:
-    void setdata(int x, int y)
-    {
-        this->x = x;   // using this pointer
-        this->y = y;
-    }
+ 
+SET SERVEROUTPUT ON;
 
-    inline void show()
-    {
-        cout << "Value of x: " << x << endl;
-        cout << "Value of y: " << y << endl;
-    }
+DECLARE
+    CURSOR emp_cursor IS 
+        SELECT emp_id, emp_name, salary FROM employee;
 
-    // friend function declaration
-    friend void sum(number n);
-};
-
-// friend function definition
-void sum(number n)
-{
-    cout << "Sum (friend function): " << n.x + n.y << endl;
-}
-
-void main()
-{
-    clrscr();
-
-    number n;
-    n.setdata(5, 10);
-
-    n.show();     // inline function
-    sum(n);       // friend function
-
-    getch();
-}</textarea>
+BEGIN
+    FOR emp_rec IN emp_cursor LOOP
+        DBMS_OUTPUT.PUT_LINE('ID: ' || emp_rec.emp_id ||
+                             ', Name: ' || emp_rec.emp_name ||
+                             ', Salary: ' || emp_rec.salary);
+    END LOOP;
+END;
+/</textarea>
+<button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
+<h2>Create a table of records using nested collections</h2>
+<textarea id="code2"rows="10" cols="80">   DECLARE
+    -- Define record type
+    TYPE emp_record IS RECORD (
+        emp_id   NUMBER,
+        emp_name VARCHAR2(50),
+        salary   NUMBER(10,2)
+    );
 
-<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
+    -- Define table type (nested collection) of records
+    TYPE emp_table IS TABLE OF emp_record;
 
+    emp_list emp_table := emp_table();  -- Initialize collection
+
+BEGIN
+    -- Add records to collection
+    emp_list.EXTEND;
+    emp_list(1).emp_id := 101;
+    emp_list(1).emp_name := 'Alice';
+    emp_list(1).salary := 45000;
+
+    emp_list.EXTEND;
+    emp_list(2).emp_id := 102;
+    emp_list(2).emp_name := 'Bob';
+    emp_list(2).salary := 55000;
+
+    -- Display records
+    FOR i IN 1 .. emp_list.COUNT LOOP
+        DBMS_OUTPUT.PUT_LINE('ID: ' || emp_list(i).emp_id ||
+                             ', Name: ' || emp_list(i).emp_name ||
+                             ', Salary: ' || emp_list(i).salary);
+    END LOOP;
+END;
+/</textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
+      
 <script>
-function copyCode() {
-  let text = document.getElementById("codeBox").value;
-  let btn = document.getElementById("copyBtn");
+function copyCode(id, btn) {
+  let text = document.getElementById(id).value;
 
   navigator.clipboard.writeText(text);
 
   btn.innerText = "✅ Copied!";
   
   setTimeout(() => {
-    btn.innerText = "📋 Copy Code";
+    btn.innerText = "📋 Copy";
   }, 2000);
 }
 </script>
